@@ -18,7 +18,7 @@
 #
 
 packages = case node['platform']
-  when "centos","redhat","fedora","scientific"
+  when "centos","redhat","fedora","scientific","amazon"
     %w{openssh-clients openssh}
   when "arch"
     %w{openssh}
@@ -32,7 +32,7 @@ end
 
 service "ssh" do
   case node['platform']
-  when "centos","redhat","fedora","arch","scientific"
+  when "centos","redhat","amazon","fedora","arch","scientific"
     service_name "sshd"
   else
     service_name "ssh"

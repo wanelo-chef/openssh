@@ -24,7 +24,7 @@
 default['openssh']['package_name'] = case node['platform_family']
                                      when "rhel", "fedora"
                                        %w{openssh-clients openssh}
-                                     when "arch"
+                                     when "arch", "smartos"
                                        %w{openssh}
                                      else
                                        %w{openssh-client openssh-server}
@@ -100,7 +100,7 @@ default['openssh']['server']['challenge_response_authentication'] = "no"
 # default['openssh']['server']['kerberos_get_afs_token'] = "no"
 # default['openssh']['server']['gssapi_authentication'] = "no"
 # default['openssh']['server']['gssapi_clean_up_credentials'] = "yes"
-default['openssh']['server']['use_pam'] = "yes"
+default['openssh']['server']['use_pam'] = "yes" unless platform == "smartos"
 # default['openssh']['server']['allow_agent_forwarding'] = "yes"
 # default['openssh']['server']['allow_tcp_forwarding'] = "yes"
 # default['openssh']['server']['gateway_ports'] = "no"

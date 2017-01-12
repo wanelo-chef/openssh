@@ -25,7 +25,7 @@ default['openssh']['package_name'] = case node['platform_family']
                                      when "rhel", "fedora"
                                        %w{openssh-clients openssh}
                                      when "arch", "smartos"
-                                       %w{openssh}
+                                       %w{}
                                      else
                                        %w{openssh-client openssh-server}
                                      end
